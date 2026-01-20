@@ -38,7 +38,6 @@ const SAMPLE_APOLOGIES = [
   }
 ];
 
-
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedApology, setSelectedApology] = useState(null);
@@ -54,7 +53,6 @@ const App = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,29 +79,52 @@ const App = () => {
       </div>
       
       <div className="mission-statement">
-        <p className="mission-text">
-          This is a public archive where people from Western countries can submit written apologies 
-          to the people of Afghanistan for the ways Western governments, institutions, militaries, 
-          media, and societies have harmed, destabilized, occupied, or abandoned the country over 
-          the past several decades.
+        <p className="mission-text interactive-text">
+        {"This is a public archive where people from Western countries can submit written apologies to the people of Afghanistan for the ways Western governments, institutions, militaries, media, and societies have harmed, destabilized, occupied, or abandoned the country over the past several decades.".split(' ').map((word, wordIndex) => (
+ <span key={wordIndex} style={{display: 'inline-block', marginRight: '0.25em'}}>
+    {word.split('').map((char, charIndex) => (
+      <span key={charIndex} className="letter-body" style={{'--i': wordIndex * 20 + charIndex}}>
+        {char}
+      </span>
+    ))}
+  </span>
+))}
         </p>
         
-        <p className="mission-text">
-          This space exists to create accountability and humility from Western individuals. It does 
-          not speak for Afghans. It does not ask for forgiveness. It acknowledges that apologies do 
-          not repair material harm, but argues that naming responsibility and refusing amnesia matters.
+        <p className="mission-text interactive-text">
+         {"This space exists to create accountability and humility from Western individuals. It does not speak for Afghans. It does not ask for forgiveness. It acknowledges that apologies do not repair material harm, but argues that naming responsibility and refusing amnesia matters.".split(' ').map((word, wordIndex) => (
+<span key={wordIndex} style={{display: 'inline-block', marginRight: '0.25em'}}>
+    {word.split('').map((char, charIndex) => (
+      <span key={charIndex} className="letter-body" style={{'--i': wordIndex * 20 + charIndex}}>
+        {char}
+      </span>
+    ))}
+  </span>
+))}
         </p>
         
-        <p className="mission-text">
-          This project is not an act of hating America, rejecting its ideals, or condemning those 
-          who served in uniform. It is rooted in the belief that a confident patriotism is compatible 
-          with moral reckoning, and that democratic societies are strongest when they can confront 
-          the consequences of their power honestly.
+        <p className="mission-text interactive-text">
+        {"This project is not an act of hating America, rejecting its ideals, or condemning those who served in uniform. It is rooted in the belief that a confident patriotism is compatible with moral reckoning, and that democratic societies are strongest when they can confront the consequences of their power honestly. United We Stand and In God We Trust!".split(' ').map((word, wordIndex) => (
+ <span key={wordIndex} style={{display: 'inline-block', marginRight: '0.25em'}}>
+    {word.split('').map((char, charIndex) => (
+      <span key={charIndex} className="letter-body" style={{'--i': wordIndex * 20 + charIndex}}>
+        {char}
+      </span>
+    ))}
+  </span>
+))}
         </p>
         
-        <p className="mission-text emphasis">
-          This is not a debate forum. This is not a comment section. This is not a place for Afghans 
-          to be interrogated or asked to forgive. This is an act of record-keeping and acknowledgment.
+        <p className="mission-text emphasis interactive-text">
+         {"This is not a debate forum. This is not a comment section. This is not a place for Afghans to be interrogated or asked to forgive. This is an act of record-keeping and acknowledgment.".split(' ').map((word, wordIndex) => (
+ <span key={wordIndex} style={{display: 'inline-block', marginRight: '0.25em'}}>
+    {word.split('').map((char, charIndex) => (
+      <span key={charIndex} className="letter-body" style={{'--i': wordIndex * 20 + charIndex}}>
+        {char}
+      </span>
+    ))}
+  </span>
+))}
         </p>
       </div>
       
@@ -389,6 +410,7 @@ const App = () => {
           color: #ffffff;
           margin-bottom: 16px;
           font-family: 'Cormorant Garamond', 'Georgia', serif;
+          white-space: nowrap;
         }
         
         .title-line {
@@ -415,6 +437,23 @@ const App = () => {
           border-left: 2px solid #5a4a3d;
           padding-left: 24px;
           margin-top: 40px;
+        }
+        
+        .interactive-text .letter-body {
+          display: inline-block;
+          transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .interactive-text .letter-body:hover {
+          transform: translateY(-2px) translateX(1px);
+        }
+        
+        .interactive-text .letter-body:hover + .letter-body {
+          transform: translateY(-1px) translateX(0.5px);
+        }
+        
+        .interactive-text .letter-body:hover + .letter-body + .letter-body {
+          transform: translateY(-0.5px) translateX(0.2px);
         }
         
         .home-actions {
