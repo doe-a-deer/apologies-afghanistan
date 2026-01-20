@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Globe } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 // Sample data structure for apologies
 const SAMPLE_APOLOGIES = [
@@ -38,13 +38,6 @@ const SAMPLE_APOLOGIES = [
   }
 ];
 
-// Seeded translation function (simulates API translation)
-const translateText = async (text, targetLang) => {
-  // In production, this would call Google Translate API or similar
-  // For now, we'll use our sample data structure
-  await new Promise(resolve => setTimeout(resolve, 800)); // Simulate API delay
-  return { translated: text, transliterated: text };
-};
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -62,9 +55,6 @@ const App = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // Admin state (for demo purposes)
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [pendingApologies, setPendingApologies] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
